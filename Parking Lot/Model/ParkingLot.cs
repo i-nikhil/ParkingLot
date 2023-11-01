@@ -1,21 +1,30 @@
-﻿using System;
+﻿using Parking_Lot.Constant;
+using Parking_Lot.Exceptions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Parking_Lot.Model
 {
     public class ParkingLot
     {
         public int Capacity { get; private set; }
-        
-        //Mapping between slot number and the car's registration number
-        public Dictionary<int, string> Slots { get; private set; }
+
+        //Mapping between slot number and the car
+        public Dictionary<int, Car> Slots { get; private set; }
 
         public ParkingLot(int capacity)
         {
-            Slots = new Dictionary<int, string>(capacity);
+            if (capacity <= 0)
+            {
+                throw new InvalidParkingLotCapacityException(Errors.InvalidParkingLotCapacity);
+            }
+
+            Capacity = capacity;
+            Slots = new Dictionary<int, Car>(capacity);
+
+            for (int slotIndex = 1; slotIndex <= capacity; slotIndex++)
+            {
+                Slots.Add(slotIndex, null);
+            }
         }
     }
 }

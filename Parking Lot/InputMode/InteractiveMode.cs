@@ -17,15 +17,22 @@ namespace Parking_Lot.InputMode
 
             while (true)
             {
-                string input = Console.ReadLine();
-
-                Command command = new Command(input);
-
-                ProcessCommand(command);
-
-                if(command.commandName == ExitCommandExecutor.CommandName)
+                try
                 {
-                    break;
+                    string input = Console.ReadLine();
+
+                    Command command = new Command(input);
+
+                    ProcessCommand(command);
+
+                    if (command.commandName == ExitCommandExecutor.CommandName)
+                    {
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
             }
         }

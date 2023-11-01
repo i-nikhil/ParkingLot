@@ -55,8 +55,13 @@
     <Compile Include="Commands\StatusCommandExecutor.cs" />
     <Compile Include="Constant\Errors.cs" />
     <Compile Include="Constant\Messages.cs" />
+    <Compile Include="Exceptions\CarAlreadyParkedException.cs" />
     <Compile Include="Exceptions\InvalidCommandException.cs" />
     <Compile Include="Exceptions\InvalidModeException.cs" />
+    <Compile Include="Exceptions\InvalidParkingLotCapacityException.cs" />
+    <Compile Include="Exceptions\NoFreeSlotAvailableException.cs" />
+    <Compile Include="Exceptions\ParkingLotAlreadyCreatedException.cs" />
+    <Compile Include="Exceptions\ParkingLotNotCreatedException.cs" />
     <Compile Include="InputMode\FileMode.cs" />
     <Compile Include="InputMode\InteractiveMode.cs" />
     <Compile Include="InputMode\Mode.cs" />

@@ -1,7 +1,7 @@
-﻿using Parking_Lot.Model;
+﻿using Parking_Lot.Constant;
+using Parking_Lot.Model;
 using Parking_Lot.Service;
 using System;
-using System.Linq;
 
 namespace Parking_Lot.Commands
 {
@@ -20,7 +20,10 @@ namespace Parking_Lot.Commands
 
         public override void Execute(Command command)
         {
-            throw new NotImplementedException();
+            Car car = new Car(command.parameters[0], command.parameters[1]);
+            int slotAlloted = parkingLotService.Park(car);
+
+            Console.WriteLine(string.Format(Messages.CarParked, slotAlloted));
         }
     }
 }

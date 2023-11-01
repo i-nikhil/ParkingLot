@@ -5,9 +5,9 @@ namespace Parking_Lot.Commands
 {
     public abstract class CommandExecutor
     {
-        private readonly ParkingLotService parkingLotService;
+        protected readonly ParkingLotService parkingLotService;
 
-        public CommandExecutor(ParkingLotService service)
+        protected CommandExecutor(ParkingLotService service)
         {
             parkingLotService = service;
         }

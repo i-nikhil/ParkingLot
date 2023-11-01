@@ -7,18 +7,25 @@ namespace Parking_Lot.InputMode
 {
     public abstract class Mode
     {
-        private CommandExecutorFactory commandExecutorFactory;
+        private readonly CommandExecutorFactory commandExecutorFactory;
 
-        protected Mode (CommandExecutorFactory commandExecutorFactory)
+        protected Mode(CommandExecutorFactory commandExecutorFactory)
         {
             this.commandExecutorFactory = commandExecutorFactory;
         }
 
-        // Helper method to process a command
+        // Common helper method to process a command
         protected void ProcessCommand(Command command)
         {
             CommandExecutor executor = commandExecutorFactory.GetCommandExecutor(command);
-            executor.Execute(command);
+            if (executor.Validate(command))
+            {
+                executor.Execute(command);
+            }
+            else
+            {
+                throw new InvalidCommandException(Errors.InvalidCommand);
+            }
         }
 
         // Abstract method to process the mode
