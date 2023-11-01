@@ -9,5 +9,8 @@
         public static readonly string ParkingLotNotCreated = "Create a Parking Lot first, using command: 'create_parking_lot <number of slots>'";
         public static readonly string CarAlreadyParked = "Car with registration number {0} is already parked in slot {1}";
         public static readonly string NoFreeSlotAvailable = "Sorry, parking lot is full";
+        public static readonly string ParkingSlotEmpty = "No car present in parking slot {0}";
+        public static readonly string SlotNumberOutOfRange = "Slot number must be within 1 and {0}";
+        public static readonly string NoCarsParked = "No cars present in parking lot at the moment";
     }
 }

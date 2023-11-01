@@ -62,6 +62,8 @@
     <Compile Include="Exceptions\NoFreeSlotAvailableException.cs" />
     <Compile Include="Exceptions\ParkingLotAlreadyCreatedException.cs" />
     <Compile Include="Exceptions\ParkingLotNotCreatedException.cs" />
+    <Compile Include="Exceptions\ParkingSlotEmptyException.cs" />
+    <Compile Include="Exceptions\SlotNumberOutOfRangeException.cs" />
     <Compile Include="InputMode\FileMode.cs" />
     <Compile Include="InputMode\InteractiveMode.cs" />
     <Compile Include="InputMode\Mode.cs" />

@@ -20,9 +20,7 @@ namespace Parking_Lot.Commands
 
         public override void Execute(Command command)
         {
-            Car car = new Car(command.parameters[0], command.parameters[1]);
-            int slotAlloted = parkingLotService.Park(car);
-
+            int slotAlloted = parkingLotService.ParkCar(command.parameters[0], command.parameters[1]);
             Console.WriteLine(string.Format(Messages.CarParked, slotAlloted));
         }
     }

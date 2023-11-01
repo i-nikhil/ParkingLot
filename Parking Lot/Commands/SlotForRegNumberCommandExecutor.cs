@@ -6,7 +6,7 @@ namespace Parking_Lot.Commands
 {
     public class SlotForRegNumberCommandExecutor : CommandExecutor
     {
-        public static readonly string CommandName = "slot_number_for_registration_number ";
+        public static readonly string CommandName = "slot_number_for_registration_number";
 
         public SlotForRegNumberCommandExecutor(ParkingLotService service) : base(service)
         {

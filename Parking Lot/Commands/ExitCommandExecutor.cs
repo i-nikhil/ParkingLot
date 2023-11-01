@@ -19,7 +19,7 @@ namespace Parking_Lot.Commands
 
         public override void Execute(Command command)
         {
-            throw new NotImplementedException();
+            Environment.Exit(0);
         }
     }
 }
