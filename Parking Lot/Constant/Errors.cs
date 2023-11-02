@@ -12,5 +12,7 @@
         public static readonly string ParkingSlotEmpty = "No car present in parking slot {0}";
         public static readonly string SlotNumberOutOfRange = "Slot number must be within 1 and {0}";
         public static readonly string NoCarsParked = "No cars present in parking lot at the moment";
+        public static readonly string NoMatchingColorCarFound = "No cars found with the color {0}";
+        public static readonly string CarNotFound = "Not found";
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Parking_Lot.Model;
 using Parking_Lot.Service;
 using System;
+using System.Collections.Generic;
 
 namespace Parking_Lot.Commands
 {
@@ -18,7 +19,8 @@ namespace Parking_Lot.Commands
 
         public override void Execute(Command command)
         {
-            throw new NotImplementedException();
+            IList<int> slotNumbers = parkingLotService.GetSlotNumbersForCarsWithColor(command.parameters[0]);
+            Console.WriteLine(string.Join(", ", slotNumbers));
         }
     }
 }

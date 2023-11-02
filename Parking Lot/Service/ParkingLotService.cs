@@ -99,7 +99,7 @@ namespace Parking_Lot.Service
         }
 
         /// <summary>
-        /// Lists the car details parked at the moment
+        /// Get the list of all car's details parked at the moment
         /// </summary>
         /// <returns>Occupied slot numbers and car details</returns>
         /// <exception cref="ParkingLotNotCreatedException"></exception>
@@ -131,6 +131,78 @@ namespace Parking_Lot.Service
 
             //Return the occupied slot details
             return occupiedSlots;
+        }
+
+        /// <summary>
+        /// Get registration numbers for cars with specific color
+        /// </summary>
+        /// <param name="color">Color of cars to be found</param>
+        /// <returns>Matching car's registration number</returns>
+        /// <exception cref="CarNotFoundException"></exception>
+        public IList<string> GetRegistrationNumbersForCarsWithColor(string color)
+        {
+            //Get occupied parking slots
+            Dictionary<int, Car> occupiedSlots = GetOccupiedSlotDetails();
+
+            //Filter registration numbers by color
+            List<string> registrationNumbers = occupiedSlots.Values.Where(car => car.Color.Equals(color)).Select(car => car.RegistrationNumber).ToList();
+
+            //If no matching color car found
+            if (!registrationNumbers.Any())
+            {
+                throw new CarNotFoundException(string.Format(Errors.NoMatchingColorCarFound, color));
+            }
+
+            //Return filtered list
+            return registrationNumbers;
+        }
+
+        /// <summary>
+        /// Get slot numbers for cars with specific color
+        /// </summary>
+        /// <param name="color">Color of cars to be found</param>
+        /// <returns>Matching car's slot number</returns>
+        /// <exception cref="CarNotFoundException"></exception>
+        public IList<int> GetSlotNumbersForCarsWithColor(string color)
+        {
+            //Get occupied parking slots
+            Dictionary<int, Car> occupiedSlots = GetOccupiedSlotDetails();
+
+            //Filter parking slot numbers by color
+            List<int> slotNumbers = occupiedSlots.Where(slot => slot.Value.Color.Equals(color)).Select(slot => slot.Key).ToList();
+
+            //If no matching color car found
+            if (!slotNumbers.Any())
+            {
+                throw new CarNotFoundException(string.Format(Errors.NoMatchingColorCarFound, color));
+            }
+
+            //Return filtered list
+            return slotNumbers;
+        }
+
+        /// <summary>
+        /// Get slot number for cars with specfic registration number
+        /// </summary>
+        /// <param name="registrationNumber">Car's registration number</param>
+        /// <returns>Slot number in which the car is parked</returns>
+        /// <exception cref="CarNotFoundException"></exception>
+        public int GetSlotNumberForCarsWithRegistrationNumber(string registrationNumber)
+        {
+            //Get occupied parking slots
+            Dictionary<int, Car> occupiedSlots = GetOccupiedSlotDetails();
+
+            //Find parking slot number for registration number
+            int slotNumber = occupiedSlots.FirstOrDefault(slot => slot.Value.RegistrationNumber.Equals(registrationNumber)).Key;
+
+            //If car not present in any slot
+            if (slotNumber is 0)
+            {
+                throw new CarNotFoundException(Errors.CarNotFound);
+            }
+
+            //Return slot number
+            return slotNumber;
         }
     }
 }
