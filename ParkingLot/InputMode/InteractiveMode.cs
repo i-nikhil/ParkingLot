@@ -13,7 +13,7 @@ namespace Parking_Lot.InputMode
 
         public override void process()
         {
-            Console.WriteLine(Messages.Welcome);
+            Console.WriteLine(Messages.WelcomeToInteractiveMode);
 
             while (true)
             {

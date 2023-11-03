@@ -23,7 +23,7 @@ namespace Parking_Lot
                 }
                 else if (IsFileInputMode(args))
                 {
-                    new FileMode(commandExecutorFactory).process();
+                    new FileMode(commandExecutorFactory, args[0]).process();
                 }
                 else
                 {
