@@ -16,6 +16,7 @@ namespace Parking_Lot.InputMode
 
         public override void process()
         {
+            Console.WriteLine("this is file mode");
         }
     }
 }
